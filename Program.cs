@@ -39,7 +39,7 @@ public class Program
             return RecuSearchArray(temp, value);
         }
     }
-    //Viết lại SentSearch dùng đệ quy
+    //B1. Viết lại SentSearch dùng đệ quy
     static int SentSearch(int[] arr, int value){
         int i = 0;
         int lastele = arr[arr.Length-1];
@@ -55,7 +55,9 @@ public class Program
         else
             return -1;
     }
-    //Viết lại BinSearch dùng đệ quy
+    //B2. Viết lại BinSearch dùng đệ quy
+    //B3. Viết lại BinSearch với phần tử mid được random có kiểm soát
+    //B4. Viết lại BinSearch với 2 phần tử làm mốc
     static int BinSearch(int[] sortedarr, int value){
         int left = 0, right = sortedarr.Length-1;
         while(left<=right){
