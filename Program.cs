@@ -39,10 +39,43 @@ public class Program
             return RecuSearchArray(temp, value);
         }
     }
+    //Viết lại SentSearch dùng đệ quy
+    static int SentSearch(int[] arr, int value){
+        int i = 0;
+        int lastele = arr[arr.Length-1];
+        arr[arr.Length-1] = value;
+        while(arr[i]!=value){
+                i++;
+        }
+        arr[arr.Length-1] = lastele;
+        if(i<arr.Length-1)
+            return i;
+        else if(lastele==value)
+            return arr.Length-1;
+        else
+            return -1;
+    }
+    //Viết lại BinSearch dùng đệ quy
+    static int BinSearch(int[] sortedarr, int value){
+        int left = 0, right = sortedarr.Length-1;
+        while(left<=right){
+            int mid = (left+right)/2;
+            if(sortedarr[mid]==value)
+                return mid;
+            else if(sortedarr[mid]>value){
+                //tìm bên trái
+                right = mid-1;
+            }else{
+                //tìm bên phải
+                left = mid+1;
+            }
+        } 
+        return -1; 
+    }
     public static void Main(string[] args){
         Console.Clear();
-        int[] arr = {9, 7, 2, 4, 11, 8}; int value = 4;
-        int result = SeqSearch(arr, value);
+        int[] arr = {9, 7, 2, 4, 11, 8}; int value = 7;
+        /* int result = SeqSearch(arr, value);
         Console.WriteLine("Index of element {0} is {1}", 
                                     value, result);
         result = RecuSearch(arr, 0, value);
@@ -50,6 +83,14 @@ public class Program
                                     value, result);
         Array arr2 = arr;
         result = RecuSearchArray(arr2, value);
+        Console.WriteLine("Index of element {0} is {1}", 
+                                    value, result);*/
+
+        /*int result = SentSearch(arr, value);
+        Console.WriteLine("Index of element {0} is {1}", 
+                                    value, result);*/
+        int[] orderedarr = {2, 4, 7, 8, 9, 11};
+        int result = BinSearch(orderedarr, value);
         Console.WriteLine("Index of element {0} is {1}", 
                                     value, result);
     }
