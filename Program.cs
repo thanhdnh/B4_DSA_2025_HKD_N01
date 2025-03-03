@@ -17,6 +17,7 @@ public class Program
             return RecuSearch(arr, from+1, value);
     }
     static int RecuSearchList(List<int> arr, int value){
+        //Nên sao chép arr sang list mới để thao tác
         if(arr[0]==value)
             return 0;
         else{
@@ -31,7 +32,7 @@ public class Program
             Array temp = Array.CreateInstance(typeof(int), 
                     new int[]{arr.Length-1}, 
                     new int[]{arr.GetLowerBound(0)+1});
-            //arr.CopyTo(temp, arr.GetLowerBound(0)+1);
+            //Array.Copy(arr, arr.GetLowerBound(0)+1, temp, temp.GetLowerBound(0), temp.Length-1);
             for(int i = arr.GetLowerBound(0)+1; 
                                 i<arr.Length; i++){
                 temp.SetValue((int)arr.GetValue(i), i);
@@ -76,15 +77,17 @@ public class Program
     }
     public static void Main(string[] args){
         Console.Clear();
-        int[] arr = {9, 7, 2, 4, 11, 8}; int value = 7;
+        int[] arr = {9, 7, 2, 4, 11, 8}; int value = 4;
         /* int result = SeqSearch(arr, value);
         Console.WriteLine("Index of element {0} is {1}", 
                                     value, result);
         result = RecuSearch(arr, 0, value);
         Console.WriteLine("Index of element {0} is {1}", 
                                     value, result);
-        Array arr2 = arr;
-        result = RecuSearchArray(arr2, value);
+        */
+
+        /*Array arr2 = arr;
+        int result = RecuSearchArray(arr2, value);
         Console.WriteLine("Index of element {0} is {1}", 
                                     value, result);*/
 
